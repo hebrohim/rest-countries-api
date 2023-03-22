@@ -12,10 +12,18 @@ const App = () => {
     let newRegions = Data.filter((Country) => Country.region == regionName);
     setCountries(newRegions);
   };
+
+
+  const userInput= (e) =>{
+
+    let value  = e.target.value.toLowerCase() 
+    let newCountries = Countries.filter((country)=>country.name.toLowerCase().includes(value))
+setCountries(newCountries)
+ }
   return (
     <div className="bg-gray-200">
       <Header />
-      <Input />
+      <Input Countries = {Countries} userInput = {userInput}/>
       <SelectOption filterCountry={filterCountry} />
       {Countries.map((country, index) => {
         return <Country country={country} key={index} />;
