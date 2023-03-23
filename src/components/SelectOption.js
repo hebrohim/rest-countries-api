@@ -6,10 +6,10 @@ const SelectOption = ({ filterCountry }) => {
   var Regions = ["Filter by Region",...new Set(Data.map((country) => country.region))];
   //    console.log(Regions)
   return (
-    <div className="">
-      <select
+    <div>
+      <select 
         onChange={(e) => filterCountry(e.target.value)}
-        className=" w-1/2 flex justify-between py-3 ml-9 pl-5 rounded-md text-sm"
+        className=" w-1/2 flex justify-between py-3 ml-9 pl-5 rounded-md text-sm md:w-full"
       >
         {Regions.map((region,index) => {
           return (

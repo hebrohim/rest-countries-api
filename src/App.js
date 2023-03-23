@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div className="bg-gray-200">
       <Header />
-
+<section className="md:flex items-center justify-between w-[80vw]">
       <div className=" my-6 mx-9 shadow-xl">
         <div className=" my-6  shadow-xl flex items-center w-full bg-white rounded-md pl-5">
           <MdSearch className="text-gray-500 text-xl" />
@@ -38,6 +38,10 @@ const App = () => {
       </div>
 
       <SelectOption filterCountry={filterCountry} />
+
+      </section>
+
+      <section className="md:grid grid-cols-3">
       {Countries.filter((country) =>
         country.name.toLowerCase().includes(Query)
       ).map((country, index) => {
@@ -45,6 +49,8 @@ const App = () => {
           <Country country={country} key={index} displayFull={displayFull} />
         );
       })}
+
+</section>
     </div>
   );
 };
