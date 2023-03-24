@@ -4,37 +4,49 @@ import Header from "./components/Header";
 import Input from "./components/Input";
 import SelectOption from "./components/SelectOption";
 import Country from "./components/Country";
-import { MdSearch ,MdKeyboardBackspace } from "react-icons/md";
-
-import FullCountryDetails from "./components/FullCountryDetails";
+import { MdSearch, MdKeyboardBackspace } from "react-icons/md";
 
 const App = () => {
   // console.log(Data);
   const [Countries, setCountries] = useState(Data);
   const [Query, setQuery] = useState("");
 
+  // FILTER COUNTRY BY THEIR REGION/COUNTRY NAME
   const filterCountry = (regionName) => {
     let newRegions = Data.filter((Country) => Country.region == regionName);
     setCountries(newRegions);
   };
 
+  // POPUP CONTENT
+
   const [popupContent, setpopupContent] = useState([]);
   const [displayFullDetail, setdisplayFullDetail] = useState(false);
 
+
+  // DISPLAY POPUP ON CLCIK OF A COUNTRY CARD
   const displayFull = (country) => {
     setpopupContent([country]);
     setdisplayFullDetail(true);
   };
+
+
+  //SET DARK MODE 
+const [darkMode, setdarkMode] = useState(false)
+  const toggleDarkMode = () =>{
+    setdarkMode(!darkMode)
+  }
+
   return (
-    <div>
-      <Header />
+    <main className = {darkMode?"dark":""} >
+    <div className='bg-gray-200 dark:bg-black h-screen'>
+      <Header toggleDarkMode = {toggleDarkMode} />
       {displayFullDetail ? null : (
-        <section className="md:flex items-center justify-between w-[80vw]">
-          <div className=" my-6 mx-9 shadow-xl">
+        <section className="md:flex items-center justify-between w-[80vw] dark:bg-black ">
+          <div className=" my-6 mx-9 shadow-xl ">
             <div className=" my-6  shadow-xl flex items-center w-full bg-white rounded-md pl-5 md:my-0">
               <MdSearch className="text-gray-500 text-xl" />
 
-              <input
+              <input autoComplete="off"
                 onChange={(event) => {
                   setQuery(event.target.value);
                 }}
@@ -43,6 +55,7 @@ const App = () => {
                 name="search"
                 className=" placeholder:text-sm w-full  bg-white rounded-r-md border-none focus:border-white py-2 pl-9 pr-3 shadow-sm  "
               />
+              
             </div>
           </div>
 
@@ -65,10 +78,18 @@ const App = () => {
               borders,
             } = pop;
 
-  
             return (
-              <section className="card w-[80vw]  mx-10 my-10 md:w-[25vw]" key = {name}>
-        <button onClick = {()=>setdisplayFullDetail(!displayFullDetail)} className='bg-white rounded-md px-3 mb-3 flex items-center'><MdKeyboardBackspace/>Back</button>
+              <section
+                className="card w-[80vw]  mx-10 my-10 md:w-[25vw] dark:text-white"
+                key={name}
+              >
+                <button
+                  onClick={() => setdisplayFullDetail(!displayFullDetail)}
+                  className="bg-white rounded-md px-3 mb-3 flex items-center dark:bg-gray-800"
+                >
+                  <MdKeyboardBackspace />
+                  Back
+                </button>
 
                 <img src={pop.flag} className="w-[100vw] h-1/2 rounded-t-md" />
                 <h1 className="font-bold my-5">{name}</h1>
@@ -88,7 +109,7 @@ const App = () => {
                   <span className="font-medium">Sub Region : </span>
                   {subregion}
                 </h1>
-                {/* <h1 className="text-xs mb-5">
+                <h1 className="text-xs mb-5">
                   <span className="font-medium">Capital : </span>
                   {capital}
                 </h1>
@@ -96,7 +117,7 @@ const App = () => {
                   <span className="font-medium">Top Level Domain : </span>
                   {topLevelDomain}
                 </h1>
-                <h1 className="text-xs mb-1">
+                {/* <h1 className="text-xs mb-1">
                   <span className="font-medium">Currencies : </span>
                   {currencies[0].name}
                 </h1>
@@ -138,6 +159,7 @@ const App = () => {
         </section>
       )}
     </div>
+    </main>
   );
 };
 
