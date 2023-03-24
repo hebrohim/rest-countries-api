@@ -38,6 +38,7 @@ Users should be able to:
 ### Built with
 
 - React
+- Tailwind css
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
