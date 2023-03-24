@@ -38,7 +38,7 @@ const [darkMode, setdarkMode] = useState(false)
 
   return (
     <main className = {darkMode?"dark":""} >
-    <div className='bg-gray-200 dark:bg-black h-screen'>
+    <div className='bg-gray-200 dark:bg-black'>
       <Header toggleDarkMode = {toggleDarkMode} />
       {displayFullDetail ? null : (
         <section className="md:flex items-center justify-between w-[80vw] dark:bg-black ">
