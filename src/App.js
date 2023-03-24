@@ -80,7 +80,7 @@ const [darkMode, setdarkMode] = useState(false)
 
             return (
               <section
-                className="card w-[80vw]  mx-10 my-10 md:w-[25vw] dark:text-white"
+                className="card w-[80vw]  mx-10 my-10 md:w-[25vw] h-screen dark:text-white"
                 key={name}
               >
                 <button
@@ -91,7 +91,7 @@ const [darkMode, setdarkMode] = useState(false)
                   Back
                 </button>
 
-                <img src={pop.flag} className="w-[100vw] h-1/2 rounded-t-md" />
+                <img src={pop.flag} className="w-[100vw] h-1/3 rounded-t-md" />
                 <h1 className="font-bold my-5">{name}</h1>
                 <h1 className="text-xs mb-1">
                   <span className="font-medium">Native Name : </span>
